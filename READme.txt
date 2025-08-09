@@ -58,8 +58,8 @@ Deployment: Docker, AWS/Cloud-ready
 
 1. Clone the repository: 
 
-git clone https://github.com/yourusername/drug-trafficking-detection.git
-cd drug-trafficking-detection
+git clone https://github.com/yourusername/Social-Drug-Trafficking_Detection.git
+cd Social-Drug-Trafficking_Detection
 
 2. Create a virtual environment:
 
@@ -93,6 +93,7 @@ python app.py
 
 This project is intended for educational and research purposes only.
 It should be used to explore AI/NLP techniques for social media analysis — not for unauthorized surveillance or targeting individuals.
+
 
 
 

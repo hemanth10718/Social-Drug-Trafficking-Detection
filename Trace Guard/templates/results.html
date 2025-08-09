@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="results-container">
+    <h1>Analysis Results</h1>
+    
+    <div class="platform-info">
+        <h2>@{{ username }} on {{ platform|capitalize }}</h2>
+    </div>
+    
+    <div class="score-card {% if score > 70 %}high-risk{% elif score > 40 %}medium-risk{% else %}low-risk{% endif %}">
+        <div class="score-value">{{ score }}%</div>
+        <div class="score-label">Suspicious Content Similarity</div>
+        
+        <div class="risk-level">
+            {% if score > 70 %}
+                High Risk - Strong similarity to known drug-related content
+            {% elif score > 40 %}
+                Medium Risk - Some similarity to known drug-related content
+            {% else %}
+                Low Risk - Minimal similarity to known drug-related content
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="actions">
+        <a href="{{ url_for('download_report') }}" class="btn download-btn">
+            Download Full Report (PDF)
+        </a>
+        
+        {% if score > 40 %}
+        <a href="{{ url_for('report_to_police') }}" class="btn report-btn">
+            Report to Authorities
+        </a>
+        {% endif %}
+        
+        <a href="{{ url_for('index') }}" class="btn new-analysis">
+            Analyze Another Account
+        </a>
+    </div>
+    
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> This analysis is automated and may contain false positives. 
+        Always verify results before taking action.</p>
+    </div>
+</div>
+{% endblock %}

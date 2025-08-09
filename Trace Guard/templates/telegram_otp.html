@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="otp-form">
+    <h1>Telegram Verification</h1>
+    <p>We've sent a 5-digit code to your Telegram account. Please enter it below.</p>
+    
+    <form action="{{ url_for('telegram_otp') }}" method="post">
+        <div class="form-group">
+            <label for="otp">Verification Code:</label>
+            <input type="text" id="otp" name="otp" pattern="\d{5}" 
+                   title="5-digit code" required>
+        </div>
+        
+        <button type="submit" class="verify-btn">Verify & Analyze</button>
+    </form>
+</div>
+{% endblock %}

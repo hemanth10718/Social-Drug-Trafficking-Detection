@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="report-container">
+    <h2>Analysis Report for {{ username }} ({{ platform }})</h2>
+    
+    <div class="score-box">
+        <h3>Suspicious Activity Score</h3>
+        <div class="score {% if score > 50 %}high{% else %}low{% endif %}">
+            {{ score }}%
+        </div>
+        <p class="score-description">
+            {% if score > 75 %}
+                High probability of suspicious activity
+            {% elif score > 50 %}
+                Moderate probability of suspicious activity
+            {% else %}
+                Low probability of suspicious activity
+            {% endif %}
+        </p>
+    </div>
+    
+    <div class="actions">
+        <a href="/download/{{ report_file }}" class="btn download">Download Full Report</a>
+        <form action="/report" method="POST">
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="hidden" name="platform" value="{{ platform }}">
+            <button type="submit" class="btn report">Report to Authorities</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
